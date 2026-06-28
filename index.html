@@ -274,9 +274,44 @@
   }
   footer a { color: rgba(242,177,114,0.9); text-decoration: none; }
 
+  /* ── MODAL FORM ────────────────────────────────────── */
+  .modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(31,44,41,0.6); animation: fadeIn .2s; }
+  .modal.active { display: flex; align-items: center; justify-content: center; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal-content {
+    background: #fff; border-radius: var(--radius); padding: 2.5rem;
+    max-width: 500px; width: 90%; box-shadow: 0 20px 60px var(--shadow);
+    animation: slideUp .3s;
+  }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-close {
+    position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none;
+    font-size: 1.5rem; cursor: pointer; color: var(--mid); transition: color .2s;
+  }
+  .modal-close:hover { color: var(--dark); }
+  .modal h2 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--dark); }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--dark); }
+  .form-group input, .form-group select {
+    width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 0.95rem; font-family: 'DM Sans', sans-serif; transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--orange); }
+  .form-submit {
+    width: 100%; padding: 0.9rem; background: var(--orange); color: #fff;
+    border: none; border-radius: 8px; font-size: 1rem; font-weight: 600;
+    cursor: pointer; transition: background .2s;
+  }
+  .form-submit:hover { background: #c56929; }
+  .form-success { display: none; text-align: center; padding: 2rem; }
+  .form-success.show { display: block; }
+  .form-success h3 { color: var(--teal); font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .form-success p { color: var(--mid); font-size: 0.95rem; }
+
   @media (max-width: 640px) {
     nav .nav-links { display: none; }
     .hero-trust { gap: 1.2rem; }
+    .modal-content { padding: 1.5rem; max-width: 90%; }
   }
 </style>
 </head>
@@ -291,7 +326,7 @@
     <li><a href="#why">Why Us</a></li>
     <li><a href="#reviews">Reviews</a></li>
   </ul>
-  <button class="nav-cta">Get a Free Quote</button>
+  <button class="nav-cta" onclick="openQuoteModal()">Get a Free Quote</button>
 </nav>
 
 <!-- HERO -->
@@ -314,7 +349,7 @@
     <h1>Crystal-clear glass with a<br><em>mountain-fresh finish.</em></h1>
     <p class="hero-sub">Vista Windows delivers residential and commercial window cleaning with vintage-inspired care and modern reliability. Streak-free, punctual, and guaranteed.</p>
     <div class="hero-actions">
-      <button class="btn-primary">Get a Free Quote →</button>
+      <button class="btn-primary" onclick="openQuoteModal()">Get a Free Quote →</button>
       <button class="btn-ghost">View Pricing</button>
     </div>
   
@@ -436,22 +471,7 @@
         <li>Sill &amp; frame wipe</li>
         <li>Streak-free guarantee</li>
       </ul>
-      <button class="price-btn">Get a Quote</button>
-    </div>
-
-    <div class="price-card featured">
-      <p class="price-type">Most Popular</p>
-      <h3>Full Home Clean</h3>
-      <div class="price-amount">$249 <span>starting</span></div>
-      <p class="price-note">Interior + Exterior, up to 25 windows, service plans offered</p>
-      <ul class="price-features">
-        <li>Interior &amp; exterior cleaning</li>
-        <li>Screen removal &amp; cleaning</li>
-        <li>Tracks &amp; frames detailed</li>
-        <li>Streak-free guarantee</li>
-        <li>Re-clean if not satisfied</li>
-      </ul>
-      <button class="price-btn">Get  Quote</button>
+      <button class="price-btn" onclick="openQuoteModal()">Get a Quote</button>
     </div>
 
     <div class="price-card">
@@ -569,6 +589,108 @@
 <footer>
   <p>© 2026 Vista Windows &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; All rights reserved.</p>
 </footer>
+
+<!-- QUOTE FORM MODAL -->
+<div class="modal" id="quoteModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeQuoteModal()">✕</button>
+    <h2>Get a Free Quote</h2>
+    
+    <form id="quoteForm" onsubmit="submitQuoteForm(event)">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="service">Service Interested In *</label>
+        <select id="service" name="service" required>
+          <option value="">Select a service...</option>
+          <option value="Residential Window Cleaning">Residential Window Cleaning</option>
+          <option value="Commercial Window Cleaning">Commercial Window Cleaning</option>
+          <option value="Gutter Cleaning">Gutter Cleaning</option>
+          <option value="Solar Panel Cleaning">Solar Panel Cleaning</option>
+          <option value="Post-Construction Cleanup">Post-Construction Cleanup</option>
+          <option value="Protective Glass Coat">Protective Glass Coat</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+      </div>
+      
+      <button type="submit" class="form-submit">Send Quote Request</button>
+    </form>
+    
+    <div class="form-success" id="successMessage">
+      <h3>✓ Thank You!</h3>
+      <p>Your quote request has been sent. We'll contact you within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openQuoteModal() {
+  document.getElementById('quoteModal').classList.add('active');
+}
+
+function closeQuoteModal() {
+  document.getElementById('quoteModal').classList.remove('active');
+  document.getElementById('quoteForm').style.display = 'block';
+  document.getElementById('successMessage').classList.remove('show');
+  document.getElementById('quoteForm').reset();
+}
+
+function submitQuoteForm(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const email = document.getElementById('email').value;
+  const service = document.getElementById('service').value;
+  
+  // Create mailto link with form data
+  const subject = encodeURIComponent('Quote Request from ' + name);
+  const body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Phone: ' + phone + '\n' +
+    'Email: ' + email + '\n' +
+    'Service Interested In: ' + service + '\n\n' +
+    'Please contact me with a quote for the above service.'
+  );
+  
+  // Show success message
+  document.getElementById('quoteForm').style.display = 'none';
+  document.getElementById('successMessage').classList.add('show');
+  
+  // Open email client after a short delay
+  setTimeout(() => {
+    window.location.href = 'mailto:vistawindows.clean@gmail.com?subject=' + subject + '&body=' + body;
+  }, 500);
+  
+  // Close modal after 3 seconds
+  setTimeout(() => {
+    closeQuoteModal();
+  }, 3000);
+}
+
+// Close modal when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('quoteModal');
+  modal.addEventListener('click', function(event) {
+    if (event.target === modal) {
+      closeQuoteModal();
+    }
+  });
+});
+</script>
 
 </body>
 </html>
