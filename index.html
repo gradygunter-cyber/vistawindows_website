@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vista Windows | Crystal-Clear Glass, Coastal Shine</title>
+<title>Vista Windows | Crystal-Clear Glass, Utah Pride</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 <style>
   /* ── TOKENS ─────────────────────────────────────────── */
@@ -200,9 +200,27 @@
     font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all .2s;
     background: var(--sky-lt); color: var(--sky);
   }
-  .price-card.featured .price-btn { background: #fff; color: var(--sky); }
+  .price-card.featured .price-btn { background: var(--sky-lt); color: var(--sky); }
   .price-btn:hover { background: var(--sky); color: #fff; }
-  .price-card.featured .price-btn:hover { background: var(--sky-lt); }
+  .price-card.featured .price-btn:hover { background: var(--sky); color: #fff; }
+
+  /* ── GALLERY ────────────────────────────────────────── */
+  .gallery-section { background: var(--paper); }
+  .gallery-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .gallery-item {
+    position: relative; overflow: hidden; border-radius: var(--radius);
+    aspect-ratio: 1; background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+    box-shadow: 0 8px 24px var(--shadow); transition: transform .3s, box-shadow .3s;
+  }
+  .gallery-item:hover { transform: scale(1.02); box-shadow: 0 12px 32px var(--shadow); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    color: #fff; padding: 1.5rem 1rem 1rem;
+    font-size: 0.95rem; font-weight: 600;
+  }
+  .gallery-category { display: inline-block; margin-top: 0.5rem; font-size: 0.75rem; background: var(--orange); padding: 0.3rem 0.8rem; border-radius: 100px; }
 
   /* ── WHY US ─────────────────────────────────────────── */
   .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -292,18 +310,14 @@
   </div>
 
   <div class="hero-content">
-    <div class="hero-eyebrow">Established 2024 • Coastal Window Care</div>
-    <h1>Crystal-clear glass with a<br><em>warm, coastal finish.</em></h1>
+    <div class="hero-eyebrow">Established 2024 • Utah Window Care</div>
+    <h1>Crystal-clear glass with a<br><em>mountain-fresh finish.</em></h1>
     <p class="hero-sub">Vista Windows delivers residential and commercial window cleaning with vintage-inspired care and modern reliability. Streak-free, punctual, and guaranteed.</p>
     <div class="hero-actions">
       <button class="btn-primary">Get a Free Quote →</button>
       <button class="btn-ghost">View Pricing</button>
     </div>
-    <div class="hero-trust">
-      <div class="trust-item"><strong>500+</strong> Coastal homes served</div>
-      <div class="trust-item"><strong>5★</strong> Service rating</div>
-      <div class="trust-item"><strong>100%</strong> Satisfaction guaranteed</div>
-    </div>
+  
   </div>
 </section>
 
@@ -317,7 +331,7 @@
     <div class="service-card">
       <div class="service-icon">🏡</div>
       <h3>Residential Window Cleaning</h3>
-      <p>Interior and exterior cleaning for single-family homes, condos, and townhouses. We move furniture, we leave no drips.</p>
+      <p>Interior and or exterior cleaning for single-family homes, condos, and townhouses. We move furniture, we leave no drips.</p>
       <span class="service-tag">Interior & Exterior</span>
     </div>
     <div class="service-card">
@@ -327,15 +341,9 @@
       <span class="service-tag">Flexible Scheduling</span>
     </div>
     <div class="service-card">
-      <div class="service-icon">🔧</div>
-      <h3>Pressure Washing</h3>
-      <p>Driveways, siding, decks, and walkways. Blast away years of grime and restore your home's curb appeal in a single visit.</p>
-      <span class="service-tag">All Surfaces</span>
-    </div>
-    <div class="service-card">
       <div class="service-icon">🍂</div>
       <h3>Gutter Cleaning</h3>
-      <p>Clear debris and prevent water damage. We flush downspouts and report any structural concerns we spot while on the roof.</p>
+      <p>Clear debris and prevent water damage. We flush downspouts and clean them.</p>
       <span class="service-tag">Seasonal Special</span>
     </div>
     <div class="service-card">
@@ -349,6 +357,61 @@
       <h3>Post-Construction Cleanup</h3>
       <p>Remove paint overspray, stickers, caulk, and construction dust from windows — safely, without scratching the glass.</p>
       <span class="service-tag">New Builds Welcome</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section">
+  <p class="section-label">Our Work</p>
+  <h2>Before & After transformations<br>and team in action</h2>
+  <p class="section-intro">See the crystal-clear difference Vista Windows makes. From sparkling residential homes to gleaming commercial properties.</p>
+
+  <div class="gallery-container">
+    <!-- Before & After Examples -->
+    <div class="gallery-item">
+      <img src="" alt="Before and after window cleaning">
+      <div class="gallery-label">
+        Before & After
+        <div class="gallery-category">Residential</div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="before-after-2.jpg" alt="Before and after window cleaning">
+      <div class="gallery-label">
+        Before & After
+        <div class="gallery-category">Residential</div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="before-after-3.jpg" alt="Before and after window cleaning">
+      <div class="gallery-label">
+        Before & After
+        <div class="gallery-category">Commercial</div>
+      </div>
+    </div>
+
+    <!-- Team at Work -->
+    <div class="gallery-item">
+      <img src="team-working-1.jpg" alt="Vista Windows team cleaning windows">
+      <div class="gallery-label">
+        Team in Action
+        <div class="gallery-category">On Site</div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="team-working-2.jpg" alt="Vista Windows team cleaning windows">
+      <div class="gallery-label">
+        Team in Action
+        <div class="gallery-category">On Site</div>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="team-working-3.jpg" alt="Vista Windows team cleaning windows">
+      <div class="gallery-label">
+        Team in Action
+        <div class="gallery-category">On Site</div>
+      </div>
     </div>
   </div>
 </section>
@@ -378,7 +441,7 @@
       <p class="price-type">Most Popular</p>
       <h3>Full Home Clean</h3>
       <div class="price-amount">$249 <span>starting</span></div>
-      <p class="price-note">Interior + Exterior, up to 25 windows</p>
+      <p class="price-note">Interior + Exterior, up to 25 windows, service plans offered</p>
       <ul class="price-features">
         <li>Interior &amp; exterior cleaning</li>
         <li>Screen removal &amp; cleaning</li>
@@ -386,7 +449,7 @@
         <li>Streak-free guarantee</li>
         <li>Re-clean if not satisfied</li>
       </ul>
-      <button class="price-btn">Get a Quote</button>
+      <button class="price-btn">Get  Quote</button>
     </div>
 
     <div class="price-card">
@@ -444,12 +507,6 @@
         </div>
       </div>
     </div>
-    <div class="why-visual">
-      <div class="why-stat"><div class="num">500+</div><div class="lbl">Properties Cleaned</div></div>
-      <div class="why-stat"><div class="num">8yr</div><div class="lbl">In Business</div></div>
-      <div class="why-stat"><div class="num">100%</div><div class="lbl">Satisfaction Rate</div></div>
-      <div class="why-stat"><div class="num">48h</div><div class="lbl">Avg. Booking Time</div></div>
-    </div>
   </div>
 </section>
 
@@ -500,7 +557,7 @@
 <section class="cta-section">
   <h2>Ready for crystal-clear windows?</h2>
   <p>Free quotes, fast booking, and results you'll notice from the street. Give us a call or drop us a message.</p>
-  <a href="tel:+15550001234" class="cta-phone">(555) 000-1234</a>
+  <a href="tel:+18018349197" class="cta-phone">801-834-9197</a>
   <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
     <button class="btn-primary">Request a Free Quote</button>
     <button class="btn-ghost">Email Us</button>
