@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vista Windows | Crystal-Clear Glass, Coastal Shine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+<style>
+  /* ── TOKENS ─────────────────────────────────────────── */
+  :root {
+    --cream:   #F5E9D7;
+    --paper:   #FBF5EE;
+    --teal:    #164D47;
+    --teal-lt: #6B9F8F;
+    --orange:  #D57A2A;
+    --orange-lt:#F2B172;
+    --dark:    #1F2C2B;
+    --mid:     #50655C;
+    --border:  #D8C4AE;
+    --shadow:  rgba(31,44,41,0.12);
+    --radius:  16px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ────────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(245,233,215,0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(216,196,174,0.8);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--teal); letter-spacing: -0.03em; }
+  .logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--mid); font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--sky); }
+  .nav-cta {
+    background: var(--sky); color: #fff; border: none; border-radius: 8px;
+    padding: 0.55rem 1.3rem; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: var(--accent); }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero {
+    min-height: 88vh;
+    background: linear-gradient(175deg, #F9F2E6 0%, #EDE1D1 40%, #6B9F8F 100%);
+    display: flex; align-items: center;
+    padding: 0 5%;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Signature element: window-pane grid light beam */
+  .hero-window {
+    position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+    width: 520px; height: 520px; opacity: 0.12;
+    display: grid; grid-template-columns: 1fr 4px 1fr; grid-template-rows: 1fr 4px 1fr;
+    gap: 0;
+  }
+  .hero-window .pane { border: 2px solid rgba(22,77,71,0.2); border-radius: 4px; background: rgba(255,255,255,0.55); }
+  .hero-window .mullion-h { background: rgba(22,77,71,0.42); border-radius: 4px; }
+  .hero-window .mullion-v { background: rgba(22,77,71,0.42); border-radius: 4px; }
+
+  .hero-content { position: relative; z-index: 2; max-width: 640px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(213,122,42,0.1); border: 1px solid rgba(213,122,42,0.2);
+    border-radius: 100px; padding: 0.45rem 1rem;
+    color: var(--teal); font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before { content: '✦'; font-size: 0.6rem; }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4rem);
+    color: var(--dark); line-height: 1.1; letter-spacing: -0.02em;
+    margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: normal; color: var(--orange); }
+  .hero-sub { color: var(--mid); font-size: 1.1rem; max-width: 520px; margin-bottom: 2.2rem; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange); color: var(--paper); font-weight: 700;
+    border: none; border-radius: 10px; padding: 0.9rem 2rem;
+    font-size: 1rem; cursor: pointer; transition: all .2s;
+    box-shadow: 0 12px 24px rgba(213,122,42,0.18);
+  }
+  .btn-primary:hover { background: #c56929; }
+  .btn-ghost {
+    background: transparent; color: var(--teal); font-weight: 700;
+    border: 1.5px solid rgba(22,77,71,0.2); border-radius: 10px;
+    padding: 0.9rem 2rem; font-size: 1rem; cursor: pointer; transition: all .2s;
+  }
+  .btn-ghost:hover { border-color: var(--teal); background: rgba(22,77,71,0.08); }
+
+  .hero-trust {
+    display: flex; gap: 2rem; margin-top: 3rem; padding-top: 2rem;
+    border-top: 1px solid rgba(22,77,71,0.14); flex-wrap: wrap;
+  }
+  .trust-item { color: var(--mid); font-size: 0.9rem; }
+  .trust-item strong { display: block; font-size: 1.4rem; color: var(--teal); font-family: 'Playfair Display', serif; }
+
+  /* ── SERVICES ───────────────────────────────────────── */
+  section { padding: 6rem 5%; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--orange); margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    line-height: 1.15; letter-spacing: -0.02em; color: var(--dark);
+    margin-bottom: 1rem;
+  }
+  .section-intro { color: var(--mid); font-size: 1.05rem; max-width: 520px; margin-bottom: 3rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--pale);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .service-card:hover { box-shadow: 0 8px 30px rgba(26,133,200,0.12); transform: translateY(-3px); }
+  .service-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--sky-lt); display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.2rem;
+  }
+  .service-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark); }
+  .service-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.6; }
+  .service-tag {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.75rem; font-weight: 600; color: var(--sky);
+    background: var(--sky-lt); border-radius: 100px; padding: 0.25rem 0.8rem;
+  }
+
+  /* ── PRICING ────────────────────────────────────────── */
+  .pricing-section { background: var(--pale); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; max-width: 1000px;
+  }
+  .price-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem;
+    display: flex; flex-direction: column; transition: all .2s;
+  }
+  .price-card.featured {
+    background: #164D47; border-color: #164D47;
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .price-card.featured::before {
+    content: 'Most Popular';
+    position: absolute; top: 16px; right: -28px;
+    background: var(--orange); color: #fff;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 4px 32px;
+    transform: rotate(35deg);
+  }
+  .price-card:not(.featured):hover { box-shadow: 0 8px 30px rgba(26,133,200,0.1); }
+  .price-type { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sky); margin-bottom: 0.5rem; }
+  .price-card.featured .price-type { color: rgba(255,255,255,0.75); }
+  .price-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .price-amount { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--dark); line-height: 1; margin: 1rem 0 0.25rem; }
+  .price-amount span { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 400; color: var(--mid); }
+  .price-card.featured .price-amount { color: #fff; }
+  .price-card.featured .price-amount span { color: rgba(255,255,255,0.7); }
+  .price-note { font-size: 0.8rem; color: var(--mid); margin-bottom: 1.5rem; }
+  .price-card.featured .price-note { color: rgba(255,255,255,0.65); }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; flex: 1; }
+  .price-features li { font-size: 0.9rem; display: flex; align-items: flex-start; gap: 0.6rem; color: var(--mid); }
+  .price-card.featured .price-features li { color: rgba(255,255,255,0.85); }
+  .price-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .price-card.featured .price-features li::before { color: #fff; }
+  .price-btn {
+    width: 100%; padding: 0.8rem; border-radius: 8px; border: none;
+    font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all .2s;
+    background: var(--sky-lt); color: var(--sky);
+  }
+  .price-card.featured .price-btn { background: #fff; color: var(--sky); }
+  .price-btn:hover { background: var(--sky); color: #fff; }
+  .price-card.featured .price-btn:hover { background: var(--sky-lt); }
+
+  /* ── WHY US ─────────────────────────────────────────── */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+  .why-visual {
+    background: linear-gradient(145deg, #F8EEE1, #E6D7BF 45%, #B1C7B8 100%);
+    border-radius: 20px; padding: 3rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .why-stat { text-align: center; }
+  .why-stat .num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--sky); }
+  .why-stat .lbl { font-size: 0.8rem; color: var(--mid); }
+  .why-points { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .why-point { display: flex; gap: 1rem; align-items: flex-start; }
+  .why-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--orange); flex-shrink: 0; margin-top: 6px; }
+  .why-point h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .why-point p { font-size: 0.87rem; color: var(--mid); }
+
+  /* ── TESTIMONIALS ───────────────────────────────────── */
+  .testimonials-section { background: #164D47; }
+  .testimonials-section .section-label { color: var(--orange-lt); }
+  .testimonials-section h2 { color: #fff; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .testi-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 2rem;
+  }
+  .stars { color: #F5C542; font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testi-text { color: rgba(255,255,255,0.8); font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+  .testi-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--sky); display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 0.9rem;
+  }
+  .testi-name { font-size: 0.9rem; font-weight: 600; color: #fff; }
+  .testi-loc { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+
+  /* ── CTA FOOTER ─────────────────────────────────────── */
+  .cta-section {
+    background: linear-gradient(135deg, #164D47 0%, #1F2C2B 100%);
+    text-align: center; padding: 6rem 5%;
+  }
+  .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+  .cta-section p { color: rgba(255,255,255,0.8); max-width: 440px; margin: 0 auto 2.5rem; }
+  .cta-phone { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--orange); margin-bottom: 2rem; display: block; }
+
+  footer {
+    background: #1A2C28; color: rgba(255,255,255,0.65);
+    text-align: center; padding: 2rem 5%; font-size: 0.82rem;
+  }
+  footer a { color: rgba(242,177,114,0.9); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    nav .nav-links { display: none; }
+    .hero-trust { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Vista<span>Windows</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <button class="nav-cta">Get a Free Quote</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Signature: giant window-pane silhouette -->
+  <div class="hero-window">
+    <div class="pane"></div>
+    <div class="mullion-h"></div>
+    <div class="pane"></div>
+    <div class="mullion-v"></div>
+    <div></div>
+    <div class="mullion-v"></div>
+    <div class="pane"></div>
+    <div class="mullion-h"></div>
+    <div class="pane"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Established 2024 • Coastal Window Care</div>
+    <h1>Crystal-clear glass with a<br><em>warm, coastal finish.</em></h1>
+    <p class="hero-sub">Vista Windows delivers residential and commercial window cleaning with vintage-inspired care and modern reliability. Streak-free, punctual, and guaranteed.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Get a Free Quote →</button>
+      <button class="btn-ghost">View Pricing</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><strong>500+</strong> Coastal homes served</div>
+      <div class="trust-item"><strong>5★</strong> Service rating</div>
+      <div class="trust-item"><strong>100%</strong> Satisfaction guaranteed</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-label">What We Do</p>
+  <h2>Services built around<br>your property</h2>
+  <p class="section-intro">Every job uses professional-grade equipment and eco-friendly solutions, so your windows shine and your property stays protected.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏡</div>
+      <h3>Residential Window Cleaning</h3>
+      <p>Interior and exterior cleaning for single-family homes, condos, and townhouses. We move furniture, we leave no drips.</p>
+      <span class="service-tag">Interior & Exterior</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Commercial Window Cleaning</h3>
+      <p>Storefronts, offices, and multi-story buildings. Scheduled maintenance contracts keep your first impression flawless year-round.</p>
+      <span class="service-tag">Flexible Scheduling</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔧</div>
+      <h3>Pressure Washing</h3>
+      <p>Driveways, siding, decks, and walkways. Blast away years of grime and restore your home's curb appeal in a single visit.</p>
+      <span class="service-tag">All Surfaces</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍂</div>
+      <h3>Gutter Cleaning</h3>
+      <p>Clear debris and prevent water damage. We flush downspouts and report any structural concerns we spot while on the roof.</p>
+      <span class="service-tag">Seasonal Special</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌧️</div>
+      <h3>Solar Panel Cleaning</h3>
+      <p>Dirty panels lose up to 25% efficiency. Our specialist clean restores output and extends the life of your investment.</p>
+      <span class="service-tag">Restore Efficiency</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏗️</div>
+      <h3>Post-Construction Cleanup</h3>
+      <p>Remove paint overspray, stickers, caulk, and construction dust from windows — safely, without scratching the glass.</p>
+      <span class="service-tag">New Builds Welcome</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <p class="section-label">Transparent Pricing</p>
+  <h2>Simple, honest rates.<br>No surprise fees.</h2>
+  <p class="section-intro">All quotes are free. Prices below are starting rates; exact cost depends on home size and window count — we'll confirm before any work begins.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <p class="price-type">Residential</p>
+      <h3>Starter Clean</h3>
+      <div class="price-amount">$149 <span>starting</span></div>
+      <p class="price-note">Up to 15 windows, exterior only</p>
+      <ul class="price-features">
+        <li>Exterior window cleaning</li>
+        <li>Screen wipe-down</li>
+        <li>Sill &amp; frame wipe</li>
+        <li>Streak-free guarantee</li>
+      </ul>
+      <button class="price-btn">Get a Quote</button>
+    </div>
+
+    <div class="price-card featured">
+      <p class="price-type">Most Popular</p>
+      <h3>Full Home Clean</h3>
+      <div class="price-amount">$249 <span>starting</span></div>
+      <p class="price-note">Interior + Exterior, up to 25 windows</p>
+      <ul class="price-features">
+        <li>Interior &amp; exterior cleaning</li>
+        <li>Screen removal &amp; cleaning</li>
+        <li>Tracks &amp; frames detailed</li>
+        <li>Streak-free guarantee</li>
+        <li>Re-clean if not satisfied</li>
+      </ul>
+      <button class="price-btn">Get a Quote</button>
+    </div>
+
+    <div class="price-card">
+      <p class="price-type">Commercial</p>
+      <h3>Business Plan</h3>
+      <div class="price-amount">Custom <span>quote</span></div>
+      <p class="price-note">Storefronts, offices & multi-floor</p>
+      <ul class="price-features">
+        <li>Full interior &amp; exterior</li>
+        <li>Recurring maintenance contracts</li>
+        <li>After-hours scheduling</li>
+        <li>Invoicing &amp; accounts</li>
+        <li>Volume discounts available</li>
+      </ul>
+      <button class="price-btn">Contact Us</button>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div>
+      <p class="section-label">Why Vista Windows</p>
+      <h2>Not just clean.<br>Professionally clean.</h2>
+      <p class="section-intro">We treat your home the way we'd treat our own — with care, precision, and a checklist we actually follow.</p>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-dot"></div>
+          <div>
+            <h4>Insured & Background-Checked</h4>
+            <p>All technicians carry full liability insurance and pass background screening before their first job.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-dot"></div>
+          <div>
+            <h4>Eco-Friendly Solutions</h4>
+            <p>Our cleaning agents are biodegradable and safe for kids, pets, and plants — no harsh chemicals near your home.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-dot"></div>
+          <div>
+            <h4>Same-Day Quotes, Fast Booking</h4>
+            <p>Get a firm quote by phone or form within hours, and typically book within 48 hours.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-dot"></div>
+          <div>
+            <h4>Satisfaction Guarantee</h4>
+            <p>If you spot a streak within 48 hours of service, we come back and fix it — free, no questions asked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="why-stat"><div class="num">500+</div><div class="lbl">Properties Cleaned</div></div>
+      <div class="why-stat"><div class="num">8yr</div><div class="lbl">In Business</div></div>
+      <div class="why-stat"><div class="num">100%</div><div class="lbl">Satisfaction Rate</div></div>
+      <div class="why-stat"><div class="num">48h</div><div class="lbl">Avg. Booking Time</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews" class="testimonials-section">
+  <p class="section-label">Client Reviews</p>
+  <h2>What neighbours are saying</h2>
+  <p class="section-intro" style="color:rgba(255,255,255,0.6);margin-bottom:3rem;">Real homeowners, real results. No paid reviews — just people who love cleaner windows.</p>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">I hired Vista Windows before listing my home and the difference was unbelievable. The agent said buyers kept commenting on how bright the house felt. Worth every penny.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SK</div>
+        <div>
+          <div class="testi-name">Sarah K.</div>
+          <div class="testi-loc">Residential Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Our storefront windows are spotless every Monday morning when we open. The recurring contract has been seamless for over two years now. Highly professional team.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">TM</div>
+        <div>
+          <div class="testi-name">Tom M.</div>
+          <div class="testi-loc">Commercial Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Called in the morning and they were out by afternoon. Very thorough — even cleaned the window tracks which nobody had touched in years. Will definitely rebook.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">JP</div>
+        <div>
+          <div class="testi-name">Jamie P.</div>
+          <div class="testi-loc">Residential Client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready for crystal-clear windows?</h2>
+  <p>Free quotes, fast booking, and results you'll notice from the street. Give us a call or drop us a message.</p>
+  <a href="tel:+15550001234" class="cta-phone">(555) 000-1234</a>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+    <button class="btn-primary">Request a Free Quote</button>
+    <button class="btn-ghost">Email Us</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Vista Windows &nbsp;·&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; All rights reserved.</p>
+</footer>
+
+</body>
+</html>
