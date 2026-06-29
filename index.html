@@ -679,12 +679,8 @@ function submitQuoteForm(event) {
   fetch('https://script.google.com/macros/s/AKfycby8Tu7MLhD4t_xaaxS3PEa-RvSLngguGxRxq_l2nL2bPg9qGeD8xEQNlJL0tS5fIS9iDg/exec', {
     method: 'POST',
     mode: 'no-cors',
-    body: new URLSearchParams({
-      name: name,
-      phone: phone,
-      email: email,
-      service: service
-    }).toString()
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({ name, phone, email, service })
   })
   .then(response => {
     console.log('Quote request sent successfully');
